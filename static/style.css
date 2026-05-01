@@ -1,4 +1,11 @@
 body {
-    font-family: 'Public Sans', sans-serif;
-    padding: 20px;
+    padding: 0;
+    background-color: #fffcf5;
+    margin: 0;
+}
+
+.navbar {
+    width: 100%;
+    height: 120px;
+    background-color: #b1a99d;
 }
