@@ -9,3 +9,22 @@ body {
     height: 120px;
     background-color: #b1a99d;
 }
+
+.signin-btn {
+    background-color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.homepage {
+    height: 500px;
+    background-image: url('/static/images/monet.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
