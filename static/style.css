@@ -92,7 +92,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 60px;
+    padding: 0px;
     gap: 50px;
     background-color: #f7eddd;
     margin-top: 40px;
@@ -100,7 +100,9 @@ body {
 
 .info-text {
     flex: 1;
-    font-size: 15px;
+    max-width: 600px;
+    text-align: center;
+    font-size: 25px;
     line-height: 1.6;
     background-color: #f7eddd;
     padding: 20px;
@@ -110,7 +112,7 @@ body {
 
 
 .sample-image  img {
-    width: 200px;
+    width: 250px;
     height: auto;
     border-radius: 8px;
 
