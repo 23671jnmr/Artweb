@@ -119,3 +119,64 @@ body {
 
 }
 
+.gallery-categories {
+    text-align: center;
+    background-color: #fffcf5;
+    padding: 60px 40px;
+}
+
+.gallery-categories h2 {
+    font-size: 32px;
+    font-weight: 700px;
+    color: #5a5957;
+}
+
+.gallery-categories p {
+    font-size: 20px;
+    color: #5a5957;
+    margin-bottom: 50px;
+}
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.category-box {
+    background-color: #b1a99d;
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.category-box h3 {
+    font-size: 20px;
+    color: #5a5957;
+    margin-bottom: 20px;
+}
+
+.category-image {
+    background-color: #f7eddd;
+    height: 250px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+
+.discover-btn {
+    border-color: #bfc5c7;
+    color: white;
+    font-weight: 700;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.discover-btn:hover {
+    background-color: #9FA3A5;
+}
