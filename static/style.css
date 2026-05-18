@@ -157,12 +157,22 @@ body {
     color: #5a5957;
     margin-bottom: 20px;
 }
-
-.category-image {
+.category-image{
     background-color: #f7eddd;
+    width: 100%;
     height: 250px;
-    border-radius: 6px;
-    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 
