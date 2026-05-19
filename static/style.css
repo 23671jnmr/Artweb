@@ -2,6 +2,8 @@ body {
     padding: 0;
     background-color: #fffcf5;
     margin: 0;
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 .header-area {
@@ -10,7 +12,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 20px 0px;
 }
 
 .webname {
@@ -27,7 +29,7 @@ body {
      display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0px;
 }
 
 
@@ -39,7 +41,7 @@ body {
     border-radius: 6px;
     cursor: pointer;
     color: white;
-    margin-right: 20px;
+    margin-right: 0;
 }
 
 .divider {
