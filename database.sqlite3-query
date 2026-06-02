@@ -7,4 +7,9 @@ CREATE TABLE IF NOT EXISTS uploads (
     title TEXT  NOT NULL,
     image TEXT NOT NULL,
     description TEXT,
-    rating INTEGER DEFAULT 0 );
+    rating INTEGER DEFAULT 0,
+    category TEXT NOT NULL
+    );
+    
+
+SELECT * FROM uploads;
