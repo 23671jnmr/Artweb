@@ -6,7 +6,16 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body class="traditional-section">
-    <div class="navbar"></div>
+    <div class="gallery">
+        {% for art in uploads %}
+        <div class="art-card">
+            <img src="{{ art[2] }}" alt="{{ art[1] }}">
+            <h3>{{ art[1] }}</h3>
+            <p>{{ art[3] }}</p>
+            <p>Rating: {{ art[4] }}/5</p>
+        </div>
+        {% endfor %}
+    </div>
 
     
     

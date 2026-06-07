@@ -193,3 +193,11 @@ body {
     background-color: #9FA3A5;
 }
 
+/* Traditional section */
+
+.gallary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
