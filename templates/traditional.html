@@ -6,17 +6,33 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body class="traditional-section">
-    <div class="gallery">
+
+<div class="container">
+        <div class="left-panel">
+            <h1>TRADITIONAL ART</h1>
+            <P>
+                Traditional Art showcases
+                hand‑made creations using physical materials such aspencils, paint, ink, charcoal, and more.
+                Explore drawings, paintings, sketches, and mixed‑media pieces created by students. 
+                You can view everything without logging in, and you can log in anytime to upload your own work, leave comments, or rate other pieces.
+            </P>
+        </div>
+    
+
+
+    <div class="right-panel">
         {% for art in uploads %}
         <div class="art-card">
             <img src="{{ art[2] }}" alt="{{ art[1] }}">
-            <h3>{{ art[1] }}</h3>
-            <p>{{ art[3] }}</p>
-            <p>Rating: {{ art[4] }}/5</p>
+            <div class="art-info">
+                <h3>{{ art[1] }}</h3>
+                <p>Description: {{ art[3] }}</p>
+                <div class="rating">★★★★★</div>
+            </div>
         </div>
         {% endfor %}
     </div>
 
-    
+</div>
     
 </body>
