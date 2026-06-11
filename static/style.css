@@ -201,7 +201,7 @@ body {
 }
 
 .left-panel {
-    width: 35%;
+    width: 45%;
     padding: 40px;
     border-right: 2px solid #7b7b7b;
     background-color: #fffcf5;
@@ -218,7 +218,7 @@ body {
 }
 /* right side of the galler */
 .right-panel {
-    width: 65%;
+    width: 55%;
     padding: 40px;
     display: flex;
     flex-direction: column;

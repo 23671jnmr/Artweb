@@ -13,3 +13,12 @@ CREATE TABLE IF NOT EXISTS uploads (
     
 
 SELECT * FROM uploads;
+
+CREATE TABLE IF NOT EXISTS comments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    upload_id INTEGER NOT NULL,
+    username TEXT NOT NULL,
+    comment_text TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (upload_id) REFERENCES uploads(id)
+)
