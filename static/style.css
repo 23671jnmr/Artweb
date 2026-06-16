@@ -233,6 +233,7 @@ body {
     background-color: #f7eddd;
     padding: 15px;
     border-radius: 10px;
+    cursor: pointer;
 
 }
 
@@ -260,5 +261,10 @@ body {
     font-size: 18px;
     letter-spacing: 2px;
     
+}
+.art-link {
+    text-decoration: none;
+    color: antiquewhite;
+    display: block;
 }
 

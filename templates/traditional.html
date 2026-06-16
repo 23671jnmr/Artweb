@@ -22,14 +22,16 @@
 
     <div class="right-panel">
         {% for art in uploads %}
-        <div class="art-card">
-            <img src="{{ art[2] }}" alt="{{ art[1] }}">
-            <div class="art-info">
-                <h3>{{ art[1] }}</h3>
-                <p>Description: {{ art[3] }}</p>
-                <div class="rating">★★★★★</div>
+        <a href="/art/{{ art[0] }}" class="art-link">
+            <div class="art-card">
+                <img src="{{ art[2] }}" alt="{{ art[1] }}">
+                <div class="art-info">
+                    <h3>{{ art[1] }}</h3>
+                    <p>Description: {{ art[3] }}</p>
+                    <div class="rating">★★★★★</div>
+                </div>
             </div>
-        </div>
+        </a>
         {% endfor %}
     </div>
 
