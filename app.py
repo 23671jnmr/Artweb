@@ -43,10 +43,6 @@ def other():
     # other page
     return render_template('others.html')
 
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
 # art page
 
 
@@ -55,7 +51,7 @@ def art_page(art_id):
     conn = get_db()
     cur = conn.cursor()
 
-    cur.execute("SELECT * FROM uploads WHERE id = ?", (art_id))
+    cur.execute("SELECT * FROM uploads WHERE id = ?", (art_id,))
     art = cur.fetchone()
     cur.execute("SELECT username, comment_text, timestamp FROM comments WHERE upload_id = ?", (art_id,))
     comments = cur.fetchall()
@@ -63,3 +59,7 @@ def art_page(art_id):
     conn.close()
 
     return render_template('art_page.html', art=art, comments=comments)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
