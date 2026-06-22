@@ -40,11 +40,26 @@ def digital():
 
 @app.route('/others.html')
 def other():
-    #other page#
+    # other page
     return render_template('others.html')
 
 
 if __name__ == "__main__":
     app.run(debug=True)
 
-#sign up
+# art page
+
+
+@app.route('/art/<int:art_id>')
+def art_page(art_id):
+    conn = get_db()
+    cur = conn.cursor()
+
+    cur.execute("SELECT * FROM uploads WHERE id = ?", (art_id))
+    art = cur.fetchone()
+    cur.execute("SELECT username, comment_text, timestamp FROM comments WHERE upload_id = ?", (art_id,))
+    comments = cur.fetchall()
+
+    conn.close()
+
+    return render_template('art_page.html', art=art, comments=comments)
