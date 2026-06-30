@@ -19,5 +19,14 @@
         <p><strong>rating:</strong> {{ art['rating'] }}/5</p>
         <p><strong>Category:</strong> {{ art['category'] }}/5</p>
     </div>
+
+    <hr>
+
+    <h2>Comments</h2>
+    <div class="comments-section">
+        {% for c in comments %}
+            <p><strong>{{ c['username'] }}:</strong> {{ c['comment_text'] }}</p>
+        {% endfor %}
+    </div>
 </body>
 </html>
