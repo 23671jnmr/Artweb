@@ -6,7 +6,11 @@
     <title>{{ art['title'] }}</title>
     <link rel="stylesheet" href="{{ url_for('static, filename='style.css') }}">
 </head>
-<body>
-    
+<body class="art-detail">
+    <div class="art-container">
+        <div class="art-image">
+            <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
+        </div>
+    </div>
 </body>
 </html>
