@@ -1,0 +1,5 @@
+-- database: ./database.db
+
+SELECT id, title, image FROM uploads;
+
+SELECT id, title, image FROM uploads;

@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ art['title'] }}</title>
-    <link rel="stylesheet" href="{{ url_for('static, filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="art-detail">
     <div class="art-container">
         <div class="art-image">
-            <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
+            <img src="{{url_for('static', filename=art[2]) }}" alt="{{ art[1] }}">
         </div>
     </div>
 
     <div class="art-information">
-        <h1>{{ art['title'] }}</h1>
-        <p>{{ art['description'] }}</p>
-        <p><strong>rating:</strong> {{ art['rating'] }}/5</p>
-        <p><strong>Category:</strong> {{ art['category'] }}/5</p>
+        <h1>{{ art[1] }}</h1>
+        <p>{{ art[3] }}</p>
+        <p><strong>rating:</strong> {{ art[4] }}/5</p>
+        <p><strong>Category:</strong> {{ art[5] }}</p>
     </div>
 
     <hr>
