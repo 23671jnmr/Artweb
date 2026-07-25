@@ -3,8 +3,7 @@
 <head>
     <title>BHS Art Gallery</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css">
-</head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 <body class="traditional-section">
 
 <div class="container">
@@ -24,7 +23,7 @@
         {% for art in uploads %}
         <a href="/art/{{ art[0] }}" class="art-link">
             <div class="art-card">
-                <img src="{{ art[2] }}" alt="{{ art[1] }}">
+                    <img src="{{url_for('static', filename=art[2]) }}" alt="{{ art[1] }}">
                 <div class="art-info">
                     <h3>{{ art[1] }}</h3>
                     <p>Description: {{ art[3] }}</p>
