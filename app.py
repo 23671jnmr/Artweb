@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 import sqlite3
 
 app = Flask(__name__)
@@ -53,12 +53,34 @@ def art_page(art_id):
 
     cur.execute("SELECT * FROM uploads WHERE id = ?", (art_id,))
     art = cur.fetchone()
-    cur.execute("SELECT username, comment_text, timestamp FROM comments WHERE upload_id = ?", (art_id,))
+    cur.execute(
+        "SELECT username, comment_text, timestamp FROM comments "
+        "WHERE upload_id = ?",
+        (art_id,)
+    )
     comments = cur.fetchall()
 
     conn.close()
 
     return render_template('art_page.html', art=art, comments=comments)
+
+
+@app.route('/add_comment/<int:art_id>', methods=['POST'])
+def add_comment(art_id):
+    comment_text = request.form['comment_text']
+    username = "User12345"
+
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO comments (upload_id, username, comment_text, timestamp) "
+        "VALUES (?, ?, ?, datetime('now'))",
+        (art_id, username, comment_text)
+    )
+    conn.commit()
+    conn.close()
+
+    return redirect(f"/art/{art_id}")
 
 
 if __name__ == "__main__":
