@@ -8,57 +8,45 @@
 </head>
 <body class="art-detail">
     <div class="art-wrapper">
-        #LEFT SIDE
         <div class="art-left">
-            <div class="artist-info">
-                <div class="artist-icon">
-                <span class="artist-name">Sampleuser</span>
+            <div class="art-image">
+                <div class="artist-info">
+                    <div class="artist-icon">
+                    <span class="artist-name">S</span>
+                    </div>
                 </div>
+                <img src="{{url_for('static', filename=art[2]) }}" alt="{{ art[1] }}">
+            </div>
+
+            <div class="art-details">
+                <p class="rating"> 5/5</p>
+                <p><strong>Art Title:</strong> {{ art[1] }}</p>
+                <p><strong>Description</strong> {{ art[3] }}</p>
+                <p><strong>Category</strong> {{ art[5] }}</p>
+            </div>
+
+            <button class="upload-btn">Upload</button>
+        </div>
+
+        <div class="art-right">
+            <form class="comment-form"  method="POST" action="/add_comment/{{ art['id'] }}">
+                <input type="text" name="comment_text" placeholder="Add comment..." required>
+                <button type="submit">Submit</button>
+            </form>
+
+            <h3>Comments</h3>
+            <div class="comment-list">
+                {% for c in comments %}
+                <div class="comment-card">
+                    <div class="comment-user">
+                        <div class="user-icon">U</div>
+                        <span class="username">{{ c['username'] }}</span>
+                    </div>
+                    <p class="comment-text">{{ c['comment_text'] }}</p>
+                </div>
+                {% endfor %}
             </div>
         </div>
-        
-        <div class="art-image">
-            <img src="{{url_for('static', filename=art[2]) }}" alt="{{ art[1] }}">
-        </div>
-
-        <div class="art-details">
-            <p class="rating"> 5/5</p>
-            <p><strong>Art Title:</strong> {{ art[1] }}</p>
-            <p><strong>Description</strong> {{ art[3] }}</p>
-            <p><strong>Category</strong> {{ art[5] }}</p>
-        </div>
-
-        <button class="upload-btn">Upload</button>
-    </div>
-
-    <div class="art-information">
-        <h1>{{ art[1] }}</h1>
-        <p>{{ art[3] }}</p>
-        <p><strong>rating:</strong> {{ art[4] }}/5</p>
-        <p><strong>Category:</strong> {{ art[5] }}</p>
-    </div>
-
-    <hr>
-
-    <div class="art-right">
-        <form action="comment-form" method="POST" action="/add_comment/{{ art['id'] }}">
-            <input type="text" name="comment_text" placeholder="Add comment..." required>
-            <button type="submit">Submit</button>
-        </form>
-
-        <h3>Comments</h3>
-        <div class="comment-list">
-            {% for c in comments %}
-            <div class="comment-card">
-                <div class="comment-user">
-                    <div class="user-icon">U</div>
-                    <span class="username">{{ c['username'] }}</span>
-                </div>
-                <p class="comment-text">{{ c['comment_text'] }}</p>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
     </div>
 </body>
 </html>

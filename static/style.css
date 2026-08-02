@@ -269,10 +269,83 @@ body {
 }
 
 /* Comment section */
-.comment_section {
-    background-color: #fffcf5;
-    padding: 20px;
+.art-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+/* Left side */
+.art-left {
+    flex: 0 0 40%;
+    background-color: #f1f1f1;
+    padding: 30px;
+    border-right: 2px solid #ddd;
+    box-sizing: border-box;
+
+}
+
+.artist-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.artist-icon {
+    width: 35px;
+    height: 35px;
+    background-color: #c4c4c4;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.artist-name {
+    font-weight: 600;
+    color: #555;
+}
+
+.art-image {
+    position: relative;
+    text-align: center;
+}
+
+.art-image img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
     border-radius: 8px;
+    margin: 0 auto;
+}
+
+.art-details {
+    margin-top: 10px;
+}
+
+.rating {
+    color: #555;
+    font-size: 20px;
+}
+
+
+.upload-btn {
+    background-color: #b1a99d;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 400px;
+}
+
+/* right side*/
+
+.art-right {
+    width: 100%;
+    padding: 30px;
+    background-color: white;
 }
 
 .comment-form {
@@ -280,7 +353,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
-    background-color: #c2b5b5;
+    background-color: #e8e8e8;
     border-radius: 8px;
     padding: 10px;
 }
@@ -294,7 +367,7 @@ body {
 }
 
 .comment-form button {
-    background-color: #5a5957;
+    background-color: #b1a99d;
     color: white;
     border: none;
     border-radius: 20px;
@@ -302,7 +375,7 @@ body {
     cursor: pointer;
 }
 .comment-form button:hover {
-    background-color: #a79b8c;
+    background-color: #e8e8e8;
 }
 
 .comment-list {
@@ -344,3 +417,4 @@ body {
     color: #555;
     font-size: 14px;
 }
+
