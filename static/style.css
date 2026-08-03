@@ -407,6 +407,13 @@ body {
     margin-right: 8px;
 }
 
+.user-icon img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .username {
     font-weight: 600;
     color: #4a4a4a;
@@ -417,4 +424,12 @@ body {
     color: #555;
     font-size: 14px;
 }
-
+.back-btn {
+    background-color: #b1a99d;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-left: 400px;
+}

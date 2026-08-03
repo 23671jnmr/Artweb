@@ -9,13 +9,14 @@
 <body class="art-detail">
     <div class="art-wrapper">
         <div class="art-left">
+            <button class="back-btn" onclick="history.back()">← Back</button>
             <div class="art-image">
                 <div class="artist-info">
                     <div class="artist-icon">
                     <span class="artist-name">S</span>
                     </div>
                 </div>
-                <img src="{{url_for('static', filename=art[2]) }}" alt="{{ art[1] }}">
+                <img src="{{url_for('static', filename=art[2]) }}" alt="{{ art[1] }} — {{ art[3] }}; category {{ art[5] }}; medium and colors may vary; overall tone: neutral to contemplative">
             </div>
 
             <div class="art-details">
@@ -39,7 +40,9 @@
                 {% for c in comments %}
                 <div class="comment-card">
                     <div class="comment-user">
-                        <div class="user-icon">U</div>
+                        <div class="user-icon">
+                                <img src="https://api.dicebear.com/7.x/thumbs/svg?seed={{ c['username'] }}" alt="{{ c['username'] }} avatar showing a stylized thumbnail with initials; neutral expression">
+                        </div>
                         <span class="username">{{ c['username'] }}</span>
                     </div>
                     <p class="comment-text">{{ c['comment_text'] }}</p>
