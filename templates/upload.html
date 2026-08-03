@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="upload-container">
+    <h2>Upload Artworks</h2>
+
+    <form action="/upload" method="POST">
+
+        <input type="text" name="image_url" placeholder="Image URL..." required>
+        <input type="text" name="title" placeholder="Image title..." required>
+        <textarea name="description" placeholder="Image Description..." required></textarea>
+        <input type="number" name="rating" min="1" max="5" placeholder="Image Rating(1-5)...required">
+
+        <select name="category" required>
+            <option value="" disabled selected>Select Category...</option>
+            <option value="traditional">Traditional</option>
+            <option value="digital">Digital</option>
+            <option value="other">Other</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+    
+</body>
+</html>
