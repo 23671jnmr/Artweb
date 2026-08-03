@@ -7,25 +7,42 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="upload-container">
-    <h2>Upload Artworks</h2>
+    <div class="upload-wrapper">
+        <div class="upload-left">
+            <h2>How to Upload Images </h2>
+            <ol>
+                 <li>Upload your artwork to a site like Imgur.com or PostImages.</li>
+                <li>Copy the direct image link (it should end in .jpg, .png, etc).</li>
+                <li>Paste the link into the Image URL box on the upload page.</li>
+                <li>Add your title and description.</li>
+                <li>Press Upload.</li>
+            </ol>
+        </div>
 
-    <form action="/upload" method="POST">
 
-        <input type="text" name="image_url" placeholder="Image URL..." required>
-        <input type="text" name="title" placeholder="Image title..." required>
-        <textarea name="description" placeholder="Image Description..." required></textarea>
-        <input type="number" name="rating" min="1" max="5" placeholder="Image Rating(1-5)...required">
+        <div class="upload-right">
+            <h2>Upload Artworks</h2>
 
-        <select name="category" required>
-            <option value="" disabled selected>Select Category...</option>
-            <option value="traditional">Traditional</option>
-            <option value="digital">Digital</option>
-            <option value="other">Other</option>
-        </select>
+            <form action="/upload" method="POST">
 
-        <button type="submit">Submit</button>
-    </form>
+                <input type="text" name="image_url" placeholder="Image URL..." required>
+                <input type="text" name="title" placeholder="Image title..." required>
+                <textarea name="description" placeholder="Image Description..." required></textarea>
+                <input type="number" name="rating" min="1" max="5" placeholder="Image Rating(1-5)...required">
+
+                <select name="category" required>
+                    <option value="" disabled selected>Select Category...</option>
+                    <option value="traditional">Traditional</option>
+                    <option value="digital">Digital</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <div class="upload-btn">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="upload-btn">Upload</button>
+                </div>
+            </form>
+        </div>
     </div>
     
 </body>

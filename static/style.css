@@ -433,3 +433,69 @@ body {
     cursor: pointer;
     margin-left: 400px;
 }
+
+/* Upload section */
+
+.upload-wrapper {
+    display: flex;
+    height: 100vh;
+    margin: 0;
+} 
+
+.upload-left {
+    flex: 1;
+    background-color: #e8e8e8;
+    padding: 30px;
+    box-sizing:  border-box;
+}
+
+.upload-left h2 {
+    font-size: 24px;
+    margin-bottom:  20px;
+}
+
+.upload-left ol {
+    font-size: 16px;
+    color: #333;
+    line-height:  1.8;
+}
+.upload-right {
+    flex: 1;
+    padding: 40px;
+    background-color: #e3dfd8;
+     box-sizing:  border-box;
+}
+
+.upload-right input,
+.upload-right textarea,
+.upload-right select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    background-color: #fff;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.upload-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.cancel-btn,
+.upload-btn {
+    background-color: #b1a99d;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.cancel-btn:hover,
+.upload-btn:hover {
+    background-color: #a79b8c;
+}

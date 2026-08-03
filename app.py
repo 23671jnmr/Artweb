@@ -46,6 +46,11 @@ def other():
 # art page
 
 
+@app.route('/upload')
+def upload():
+    return render_template('upload.html')
+
+
 @app.route('/art/<int:art_id>')
 def art_page(art_id):
     conn = get_db()
