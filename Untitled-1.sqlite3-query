@@ -3,3 +3,6 @@
 SELECT id, title, image FROM uploads;
 
 SELECT id, title, image FROM uploads;
+
+PRAGMA table_info(uploads);
+PRAGMA table_info(comments);

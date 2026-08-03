@@ -46,11 +46,6 @@ def other():
 # art page
 
 
-@app.route('/upload')
-def upload():
-    return render_template('upload.html')
-
-
 @app.route('/art/<int:art_id>')
 def art_page(art_id):
     conn = get_db()
@@ -86,6 +81,29 @@ def add_comment(art_id):
     conn.close()
 
     return redirect(f"/art/{art_id}")
+
+
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        image = request.form['image_url']
+        title = request.form['title']
+        description = request.form['description']
+        rating = request.form['rating']
+        category = request.form['category']
+        username = request.form['username']
+
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute(
+            "INSERT INTO uploads (title, image, description, rating, username, category) VALUES (?, ?, ?, ?, ?, ?)",
+            (title, image, description, rating, username, category)
+        )
+        conn.commit()
+        conn.close()
+
+        return redirect('/')
+    return render_template('upload.html')
 
 
 if __name__ == "__main__":
