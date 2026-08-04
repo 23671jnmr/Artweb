@@ -23,3 +23,5 @@ CREATE TABLE IF NOT EXISTS comments (
     FOREIGN KEY (upload_id) REFERENCES uploads(id)
 );
 
+ALTER TABLE uploads ADD COLUMN username TEXT;
+

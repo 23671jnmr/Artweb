@@ -472,13 +472,15 @@ body {
 .upload-right input,
 .upload-right textarea,
 .upload-right select {
-    width: 100%;
+    width: 90%;
+    max-width: 900px;
     padding: 12px;
     border-radius: 20px;
     border: none;
     background-color: #fff;
     margin-bottom: 15px;
     font-size: 14px;
+    font-family: 'Public Sans', sans-serif;
 }
 
 .upload-buttons {
@@ -505,3 +507,4 @@ body {
 .upload-button:hover {
     background-color: #a79b8c;
 }
+
