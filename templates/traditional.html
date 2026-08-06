@@ -23,7 +23,7 @@
         {% for art in uploads %}
         <a href="/art/{{ art[0] }}" class="art-link">
             <div class="art-card">
-                    <img src="{{url_for('static', filename=art[2]) }}" alt="{{ art[1] }}">
+                <img src="{{ art[2] }}" alt="{{ art[1] }}">
                 <div class="art-info">
                     <h3>{{ art[1] }}</h3>
                     <p>Description: {{ art[3] }}</p>

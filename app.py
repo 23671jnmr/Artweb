@@ -35,15 +35,23 @@ def traditional():
 @app.route('/digital.html')
 def digital():
     # digital page
-    return render_template('digital.html')
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM uploads WHERE category = 'digital'")
+    uploads = cur.fetchall()
+    conn.close()
+    return render_template('digital.html', uploads=uploads)
 
 
 @app.route('/others.html')
 def other():
     # other page
-    return render_template('others.html')
-
-# art page
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM uploads WHERE category = 'other'")
+    uploads = cur.fetchall()
+    conn.close()
+    return render_template('others.html', uploads=uploads)
 
 
 @app.route('/art/<int:art_id>')
@@ -96,7 +104,8 @@ def upload():
         conn = get_db()
         cur = conn.cursor()
         cur.execute(
-            "INSERT INTO uploads (title, image, description, rating, username, category) VALUES (?, ?, ?, ?, ?, ?)",
+            "INSERT INTO uploads (title, image, description, rating, username,"
+            "category) VALUES (?, ?, ?, ?, ?, ?)",
             (title, image, description, rating, username, category)
         )
         conn.commit()
