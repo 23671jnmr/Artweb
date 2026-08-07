@@ -10,20 +10,20 @@
     <div class="art-wrapper">
         <div class="art-left">
             <button class="back-btn" onclick="history.back()">← Back</button>
+
             <div class="art-image">
                 <div class="artist-info">
                     <div class="artist-icon">
-                    <span class="artist-name">S</span>
+                    <span class="artist-name"></span>
                     </div>
                 </div>
-                <img src="{{ art[2] }}" alt="{{ art[1] }} — {{ art[3] }}; category {{ art[5] }}; medium and colors may vary; overall tone: neutral to contemplative">
-            </div>
+             <img src="{{ art['image'] }}" alt="{{ art['title'] }}"> </div> 
 
             <div class="art-details">
-                <p class="rating"> 5/5</p>
-                <p><strong>Art Title:</strong> {{ art[1] }}</p>
-                <p><strong>Description</strong> {{ art[3] }}</p>
-                <p><strong>Category</strong> {{ art[5] }}</p>
+                <p class="rating">{{ art['rating'] }}/5</p>
+                <p><strong>Art Title:</strong> {{ art['title'] }}</p>
+                <p><strong>Description</strong> {{ art['description'] }}</p>
+                <p><strong>Category</strong> {{ art['category'] }}</p>
             </div>
 
             <button class="upload-btn" onclick="window.location.href='/upload'">Upload</button>

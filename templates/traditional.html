@@ -21,12 +21,12 @@
 
     <div class="right-panel">
         {% for art in uploads %}
-        <a href="/art/{{ art[0] }}" class="art-link">
+        <a href="/art/{{ art['id'] }}" class="art-link">
             <div class="art-card">
-                <img src="{{ art[2] }}" alt="{{ art[1] }}">
+                <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
                 <div class="art-info">
-                    <h3>{{ art[1] }}</h3>
-                    <p>Description: {{ art[3] }}</p>
+                    <h3>{{ art['title'] }}</h3>
+                    <p>Description: {{ art['description'] }}</p>
                     <div class="rating">★★★★★</div>
                 </div>
             </div>
