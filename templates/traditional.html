@@ -23,8 +23,12 @@
         {% for art in uploads %}
         <a href="/art/{{ art['id'] }}" class="art-link">
             <div class="art-card">
+                {% if art['image'].startswith('http') %}
                 <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
-                <div class="art-info">
+                {% else %}
+                <img src="{{ url_for('static', filename='images/' ~ art['image']) }}" alt="{{ art['title'] }}">
+                {% endif %}
+                </div> 
                     <h3>{{ art['title'] }}</h3>
                     <p>Description: {{ art['description'] }}</p>
                     <div class="rating">★★★★★</div>

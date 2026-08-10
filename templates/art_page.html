@@ -14,11 +14,16 @@
             <div class="art-image">
                 <div class="artist-info">
                     <div class="artist-icon">
-                    <span class="artist-name"></span>
+                    <span class="artist-name">S</span>
                     </div>
                 </div>
-             <img src="{{ art['image'] }}" alt="{{ art['title'] }}"> </div> 
+                {% if art['image'].startswith('http') %}
+                <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
+                {% else %}
+                <img src="{{ url_for('static', filename='images/' ~ art['image']) }}" alt="{{ art['title'] }}">
+                {% endif %}
 
+             </div> 
             <div class="art-details">
                 <p class="rating">{{ art['rating'] }}/5</p>
                 <p><strong>Art Title:</strong> {{ art['title'] }}</p>

@@ -228,6 +228,7 @@ body {
 /* Artwork cards */
 
 .art-card {
+    width: 250pxS;
     display: flex;
     align-items: center;
     background-color: #f7eddd;

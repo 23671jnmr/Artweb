@@ -26,3 +26,8 @@ CREATE TABLE IF NOT EXISTS comments (
 ALTER TABLE uploads ADD COLUMN username TEXT;
 
 SELECT id, image FROM uploads;
+
+UPDATE uploads
+SET image = REPLACE(image, 'images/', '')
+;
+SELECT id, image FROM uploads;
