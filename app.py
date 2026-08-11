@@ -94,10 +94,7 @@ def add_comment(art_id):
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
-        image = request.form['image_url']
-        if image.startswith("images/"):
-            image = image.replace("images/", "")
-
+        image = request.form['image_url'].strip()
         title = request.form['title']
         description = request.form['description']
         rating = request.form['rating']

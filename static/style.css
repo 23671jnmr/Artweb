@@ -228,7 +228,6 @@ body {
 /* Artwork cards */
 
 .art-card {
-    width: 250pxS;
     display: flex;
     align-items: center;
     background-color: #f7eddd;
@@ -238,7 +237,7 @@ body {
 
 }
 
-.art-card img {
+.card-image img {
     width: 120px;
     height: 120px;
     object-fit: cover;

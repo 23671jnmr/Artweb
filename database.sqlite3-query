@@ -31,3 +31,6 @@ UPDATE uploads
 SET image = REPLACE(image, 'images/', '')
 ;
 SELECT id, image FROM uploads;
+
+UPDATE uploads
+SET image = REPLACE(image, 'images/', 'https://');

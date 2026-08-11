@@ -2,42 +2,45 @@
 <html>
 <head>
     <title>BHS Art Gallery</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body class="traditional-section">
 
 <div class="container">
-        <div class="left-panel">
-            <h1>TRADITIONAL ART</h1>
-            <P>
-                Traditional Art showcases
-                hand‑made creations using physical materials such aspencils, paint, ink, charcoal, and more.
-                Explore drawings, paintings, sketches, and mixed‑media pieces created by students. 
-                You can view everything without logging in, and you can log in anytime to upload your own work, leave comments, or rate other pieces.
-            </P>
-        </div>
-    
-
+    <div class="left-panel">
+        <h1>TRADITIONAL ART</h1>
+        <p>
+            Traditional Art showcases hand‑made creations using physical materials such as pencils, paint, ink, charcoal, and more.
+            Explore drawings, paintings, sketches, and mixed‑media pieces created by students. 
+            You can view everything without logging in, and you can log in anytime to upload your own work, leave comments, or rate other pieces.
+        </p>
+    </div>
 
     <div class="right-panel">
         {% for art in uploads %}
         <a href="/art/{{ art['id'] }}" class="art-link">
             <div class="art-card">
-                {% if art['image'].startswith('http') %}
-                <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
-                {% else %}
-                <img src="{{ url_for('static', filename='images/' ~ art['image']) }}" alt="{{ art['title'] }}">
-                {% endif %}
-                </div> 
+                
+                <div class="card-image">
+                    {% if art['image'].startswith('http') %}
+                    <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='images/' ~ art['image']) }}" alt="{{ art['title'] }}">
+                    {% endif %}
+                </div>
+
+                <div class="art-info">
                     <h3>{{ art['title'] }}</h3>
                     <p>Description: {{ art['description'] }}</p>
                     <div class="rating">★★★★★</div>
                 </div>
+
             </div>
         </a>
         {% endfor %}
     </div>
-
 </div>
     
 </body>
+</html>
