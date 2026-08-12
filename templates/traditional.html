@@ -23,7 +23,7 @@
             <div class="art-card">
                 
                 <div class="card-image">
-                    {% if art['image'].startswith('http') %}
+                    {% if  art['image'].strip().startswith('http://') or art['image'].strip().startswith('https://') %}
                     <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
                     {% else %}
                     <img src="{{ url_for('static', filename='images/' ~ art['image']) }}" alt="{{ art['title'] }}">

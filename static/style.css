@@ -205,6 +205,7 @@ body {
     padding: 40px;
     border-right: 2px solid #7b7b7b;
     background-color: #fffcf5;
+    box-sizing: border-box;
 }
 .left-panel h1 {
     font-size: 28px;
@@ -216,16 +217,23 @@ body {
     color: #5a5957;
     line-height: 1.6;
 }
-/* right side of the galler */
+/* right side of the gallery */
 .right-panel {
     width: 55%;
     padding: 40px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    box-sizing: border-box;
 }
 
 /* Artwork cards */
+
+.art-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
 
 .art-card {
     display: flex;
@@ -234,6 +242,7 @@ body {
     padding: 15px;
     border-radius: 10px;
     cursor: pointer;
+    gap: 20px;
 
 }
 
@@ -243,17 +252,24 @@ body {
     object-fit: cover;
     border-radius: 8px;
     margin-right: 20px;
+    display: block;
+}
+
+.art-info{
+    flex: 1;
 }
 
 .art-info h3 {
     margin: 0;
     font-size: 16px;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .art-info p {
     margin: 5px 0;
     color: #5a5957;
+    font-size: 14px;
 }
 
 .rating {
@@ -262,11 +278,8 @@ body {
     letter-spacing: 2px;
     
 }
-.art-link {
-    text-decoration: none;
-    color: antiquewhite;
-    display: block;
-}
+
+
 
 /* Comment section */
 .art-wrapper {
