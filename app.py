@@ -1,13 +1,44 @@
-from flask import Flask, render_template, request, redirect
+import os
 import sqlite3
+from flask import Flask, render_template, request, redirect
+from werkzeug.utils import secure_filename
+
 
 app = Flask(__name__)
+
+
+UPLOAD_FOLDER = 'static/images'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 def get_db():
     conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row
     return conn
+
+
+def fix_image_url(url):
+    """Clean up and convert webpage links into direct image URLs."""
+    if not url:
+        return url
+
+    url = url.strip()
+
+    if not (url.startswith('http://') or url.startswith('https://')):
+        return url
+
+    # Convert Imgur gallery/page links to direct image links 
+    # like turning https://....12345 to https://....12345.jpg
+    if 'imgur.com/' in url and 'i.imgur.com' not in url:
+        image_id = url.split('/')[-1]
+        return f"https://i.imgur.com/{image_id}.jpg"
+
+    # if it already has an HTTP link but missing an extension
+    image_extension = ('.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg')
+    if not url.lower().endswith(image_extension):
+        url = url + '.jpg'
+
+    return url
 
 
 @app.route('/')
@@ -94,7 +125,23 @@ def add_comment(art_id):
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
-        image = request.form['image_url'].strip()
+        image_value = ""
+
+        if 'file' in request.files and request.files['file'].filename != '':
+            file = request.files['file']
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            image_value = filename
+
+        elif (
+            'image_url' in request.form
+            and request.form['image_url'].strip() != ''
+        ):
+            image_value = fix_image_url(request.form['image_url'])
+
+        else:
+            image_value = 'sampleart.jpg'
+
         title = request.form['title']
         description = request.form['description']
         rating = request.form['rating']
@@ -106,12 +153,16 @@ def upload():
         cur.execute(
             "INSERT INTO uploads (title, image, description, rating, username,"
             "category) VALUES (?, ?, ?, ?, ?, ?)",
-            (title, image, description, rating, username, category)
+            (title, image_value, description, rating, username, category)
         )
         conn.commit()
         conn.close()
 
-        return redirect('/')
+        redirect_page = (
+            "others.html" if category == "other" else f"{category}.html"
+        )
+        return redirect(f"/{redirect_page}")
+
     return render_template('upload.html')
 
 
