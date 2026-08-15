@@ -8,20 +8,27 @@
 </head>
 <body class="art-detail">
     <div class="art-wrapper">
+
+
+        <!-- LEFT COLUMN -->
         <div class="art-left">
             <button class="back-btn" onclick="history.back()">← Back</button>
 
-            <div class="art-image">
-                <div class="artist-info">
-                    <div class="artist-icon">
-                    <span class="artist-name">S</span>
-                    </div>
+           
+            <div class="artist-info">
+                <div class="artist-icon">
+                    <img src="https://ui-avatars.com/api/?name={{ art['username'] }}&background=c4c4c4&color=fff&rounded=true" alt="Artist Avatar">
                 </div>
+            </div>
+
+
+            <div class="art-image">
                 {% if  art['image'].strip().startswith('http://') or art['image'].strip().startswith('https://') %}
                     <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
                 {% else %}
                     <img src="{{ url_for('static', filename='images/' ~ art['image']) }}" alt="{{ art['title'] }}">
                 {% endif %}
+            </div>
 
             <div class="art-details">
                 <p class="rating">{{ art['rating'] }}/5</p>
@@ -33,6 +40,7 @@
             <button class="upload-btn" onclick="window.location.href='/upload'">Upload</button>
         </div>
 
+        <!-- RIGHT COLUMN -->
         <div class="art-right">
             <form class="comment-form"  method="POST" action="/add_comment/{{ art['id'] }}">
                 <input type="text" name="comment_text" placeholder="Add comment..." required>
