@@ -18,7 +18,7 @@ body {
 .webname {
     font-size: 24px;
     color: #5a5957;
-    margin: 0;
+    margin-left: 30px;
     font-family: 'Public Sans', sans-serif;
 }
 
@@ -41,7 +41,7 @@ body {
     border-radius: 6px;
     cursor: pointer;
     color: white;
-    margin-right: 0;
+    margin-right: 30px;
 }
 
 .divider {
@@ -179,19 +179,14 @@ body {
 
 
 .discover-btn {
-    border-color: #bfc5c7;
-    color: white;
+    border-color: #adb2b4;
     font-weight: 700;
     border: none;
     padding: 15px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-.discover-btn:hover {
-    background-color: #9FA3A5;
-}
 
 /* Traditional section */
 .container {

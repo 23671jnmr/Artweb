@@ -1,11 +1,10 @@
 import os
 import sqlite3
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect
 from werkzeug.utils import secure_filename
 
 
 app = Flask(__name__)
-app.secret_key = 'change-me'  # required for server-side session support
 
 
 UPLOAD_FOLDER = 'static/images'
@@ -45,43 +44,6 @@ def fix_image_url(url):
 def home():
     # home page
     return render_template('home.html')
-
-
-# Shows the signup page
-@app.route('/signup', methods=['GET'])
-def show_signup():
-    return render_template('signup.html')
-
-
-@app.route('/signup', methods=['POST'])
-def process_signup():
-    username = request.form['username']
-    password = request.form['password']
-
-    conn = sqlite3.connect('database.db')
-    cur = conn.cursor()
-
-    try:
-
-        cur.execute(
-            "INSERT INTO users (username, password) VALUES (?, ?)",
-            (username, password),
-        )
-        conn.commit()
-        conn.close()
-
-        session['username'] = username
-        return redirect('/')
-
-    except sqlite3.IntegrityError:
-        conn.close()
-        return redirect('/signup')
-
-
-@app.route('/login.html')
-def login():
-    # login page
-    return render_template('login.html')
 
 
 @app.route('/traditional.html')
