@@ -1,7 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>BHS Art Gallery</title>
+    <title>Log-in</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
 </head>
+<body class="login-body">
+
+    <div class="login-container">
+        <!-- Left side with the art banner -->
+        <div class="login-art"></div>
+
+        <!-- right side with the form container -->
+         <div class="login-content">
+            <div class="login-card">
+                <h2>Sign In</h2>
+                 
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="username" placeholder="Username" required>
+                    </div>
+                </form>
+            </div>
+         </div>
+
+    </div>
+    
+</body>
