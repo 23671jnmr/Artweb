@@ -190,7 +190,7 @@ body {
 }
 
 
-/* Traditional section */
+/* Traditional/digital/others section */
 .container {
     display: flex;
     background-color: #fffcf5;
@@ -199,7 +199,7 @@ body {
 
 .left-panel {
     width: 45%;
-    padding: 40px;
+    padding: 30px;
     border-right: 2px solid #7b7b7b;
     background-color: #fffcf5;
     box-sizing: border-box;
@@ -304,30 +304,14 @@ html, body {
     flex-direction: column;
 }
 
-.back-btn {
-    border-radius: 20px;
-    padding: 8px 16px;
-    cursor: pointer;
-    align-self: flex-end;
-    background-color: #b1a99d;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-    width: auto;
-}
 
 .artist-info {
     display: flex;    
     align-items: center;
     margin-bottom: 15px;
+    margin-top: 20px;
 }
 
-
-.artist-name {
-    font-weight: 600;
-    color: #555;
-}
 
 .art-image {
     position: relative;
@@ -453,15 +437,7 @@ html, body {
     color: #555;
     font-size: 14px;
 }
-.back-btn {
-    background-color: #b1a99d;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 16px;
-    cursor: pointer;
-    margin-left: 400px;
-}
+
 
 /* Upload section */
 
@@ -474,7 +450,7 @@ html, body {
 .upload-left {
     flex: 0 0 45%;
     background-color: #e8e8e8;
-    padding: 60px 80px;
+    padding: 30px;
     box-sizing:  border-box;
 }
 
@@ -563,15 +539,19 @@ html, body {
     background-color: #a79b8c;
 }
 
-.back-btn-upload {
+.back-btn {
+    border-radius: 20px;
+    padding: 8px 20px;
+    cursor: pointer;
     background-color: #b1a99d;
     color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 12px 35px;
-    cursor: pointer;
     font-size: 16px;
     font-weight: 600;
     transition: background-color 0.3s ease;
     width: auto;
+    max-width: fit-content;
+}
+
+button {
+    outline: none;
 }
