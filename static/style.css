@@ -305,13 +305,16 @@ html, body {
 }
 
 .back-btn {
-    background-color: #b1a99d;
-    color: white;
-    border: none;
     border-radius: 20px;
     padding: 8px 16px;
     cursor: pointer;
     align-self: flex-end;
+    background-color: #b1a99d;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    width: auto;
 }
 
 .artist-info {
@@ -351,14 +354,18 @@ html, body {
 
 
 .upload-btn {
+    border: none;
+    margin-top: auto;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    align-self: flex-end;
     background-color: #b1a99d;
     color: white;
-    border: none;
-    border-radius: 20px;
-    padding: 8px 20px;
-    cursor: pointer;
-    margin-top: auto;
-    align-self: flex-end;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    width: auto;
 }
 
 /* right side*/

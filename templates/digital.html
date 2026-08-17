@@ -5,4 +5,44 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
 </head>
-<body>
+<body class="traditional-section">
+
+    <div class="container">
+        <div class="left-panel">
+            <h1>TRADITIONAL ART</h1>
+            <p>
+                Traditional Art showcases hand‑made creations using physical materials such as pencils, paint, ink, charcoal, and more.
+                Explore drawings, paintings, sketches, and mixed‑media pieces created by students. 
+                You can view everything without logging in, and you can log in anytime to upload your own work, leave comments, or rate other pieces.
+            </p>
+
+            <button class="upload-btn" onclick="history.back()">← Back</button>
+        </div>
+
+        <div class="right-panel">
+            {% for art in uploads %}
+            <a href="/art/{{ art['id'] }}" class="art-link">
+                <div class="art-card">
+                    
+                    <div class="card-image">
+                        {% if  art['image'].strip().startswith('http://') or art['image'].strip().startswith('https://') %}
+                        <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
+                        {% else %}
+                        <img src="{{ url_for('static', filename='images/' ~ art['image']) }}" alt="{{ art['title'] }}">
+                        {% endif %}
+                    </div>
+
+                    <div class="art-info">
+                        <h3>{{ art['title'] }}</h3>
+                        <p>Description: {{ art['description'] }}</p>
+                        <div class="rating">★★★★★</div>
+                    </div>
+
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+        
+</body>
+</html>
