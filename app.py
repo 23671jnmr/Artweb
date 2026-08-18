@@ -86,7 +86,7 @@ def art_page(art_id):
     cur.execute("SELECT * FROM uploads WHERE id = ?", (art_id,))
     art = cur.fetchone()
     cur.execute(
-        "SELECT username, comment_text, timestamp FROM comments "
+        "SELECT username, comment_text, rating, timestamp FROM comments "
         "WHERE upload_id = ?",
         (art_id,)
     )
@@ -99,15 +99,17 @@ def art_page(art_id):
 
 @app.route('/add_comment/<int:art_id>', methods=['POST'])
 def add_comment(art_id):
+    rating = request.form['rating']
     comment_text = request.form['comment_text']
-    username = "User12345"
+    username = "Anonymous Art Lover"
 
     conn = get_db()
     cur = conn.cursor()
     cur.execute(
-        "INSERT INTO comments (upload_id, username, comment_text, timestamp) "
-        "VALUES (?, ?, ?, datetime('now'))",
-        (art_id, username, comment_text)
+        "INSERT INTO comments "
+        "(upload_id, username, comment_text, rating, timestamp) "
+        "VALUES (?, ?, ?, ?, datetime('now'))",
+        (art_id, username, comment_text, rating)
     )
     conn.commit()
     conn.close()
@@ -143,7 +145,7 @@ def upload():
         conn = get_db()
         cur = conn.cursor()
         cur.execute(
-            "INSERT INTO uploads (title, image, description, rating, username,"
+            "INSERT INTO uploads (title, image, description, username,"
             "category) VALUES (?, ?, ?, ?, ?, ?)",
             (title, image_value, description, username, category)
         )
