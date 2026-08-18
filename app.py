@@ -17,29 +17,6 @@ def get_db():
     return conn
 
 
-def fix_image_url(url):
-    """Clean up and convert webpage links into direct image URLs."""
-    if not url:
-        return url
-
-    url = url.strip()
-
-    if not (url.startswith('http://') or url.startswith('https://')):
-        return url
-
-# like turning https://....12345 to https://....12345.jpg
-    if 'imgur.com/' in url and 'i.imgur.com' not in url:
-        image_id = url.split('/')[-1]
-        return f"https://i.imgur.com/{image_id}.jpg"
-
-    # if it already has an HTTP link but missing an extension
-    image_extension = ('.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg')
-    if not url.lower().endswith(image_extension):
-        url = url + '.jpg'
-
-    return url
-
-
 @app.route('/')
 def home():
     # home page
@@ -80,13 +57,16 @@ def other():
 
 @app.route('/art/<int:art_id>')
 def art_page(art_id):
+    previous_page = request.args.get('from', 'home')
+
     conn = get_db()
     cur = conn.cursor()
 
     cur.execute("SELECT * FROM uploads WHERE id = ?", (art_id,))
     art = cur.fetchone()
+
     cur.execute(
-        "SELECT username, comment_text, rating, timestamp FROM comments "
+        "SELECT username, comment_text, rating FROM comments "
         "WHERE upload_id = ?",
         (art_id,)
     )
@@ -94,11 +74,18 @@ def art_page(art_id):
 
     conn.close()
 
-    return render_template('art_page.html', art=art, comments=comments)
+    return render_template(
+        'art_page.html',
+        art=art,
+        comments=comments,
+        previous_page=previous_page
+    )
 
 
 @app.route('/add_comment/<int:art_id>', methods=['POST'])
 def add_comment(art_id):
+    previous_page = request.args.get('from', 'home')
+    
     rating = request.form['rating']
     comment_text = request.form['comment_text']
     username = "Anonymous"
@@ -107,14 +94,14 @@ def add_comment(art_id):
     cur = conn.cursor()
     cur.execute(
         "INSERT INTO comments "
-        "(upload_id, username, comment_text, rating, timestamp) "
-        "VALUES (?, ?, ?, ?, datetime('now'))",
+        "(upload_id, username, comment_text, rating) "
+        "VALUES (?, ?, ?, ?)",
         (art_id, username, comment_text, rating)
     )
     conn.commit()
     conn.close()
 
-    return redirect(f"/art/{art_id}")
+    return redirect(f"/art/{art_id}?from={previous_page}")
 
 
 @app.route('/upload', methods=['GET', 'POST'])

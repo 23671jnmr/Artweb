@@ -12,7 +12,7 @@
 
         <!-- LEFT COLUMN -->
         <div class="art-left">
-            <button class="back-btn" onclick="history.back()">← Back</button>
+            <button class="back-btn" onclick="window.location.href='/{{ previous_page }}'">← Back</button>
 
            
             <div class="artist-info">
@@ -42,7 +42,7 @@
 
         <!-- RIGHT COLUMN -->
         <div class="art-right">
-            <form class="comment-form"  method="POST" action="/add_comment/{{ art['id'] }}">
+            <form class="comment-form"  method="POST" action="/add_comment/{{ art['id'] }}?from={{ previous_page }}">
                 <input type="text" name="comment_text" maxlength="100" placeholder="Add comment..." required>
                 <select name="rating" required>
                     <option value="" disabled selected>Rate (1-5)</option>
