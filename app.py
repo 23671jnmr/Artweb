@@ -85,7 +85,6 @@ def art_page(art_id):
 @app.route('/add_comment/<int:art_id>', methods=['POST'])
 def add_comment(art_id):
     previous_page = request.args.get('from', 'home')
-    
     rating = request.form['rating']
     comment_text = request.form['comment_text']
     username = "Anonymous"
@@ -114,13 +113,6 @@ def upload():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             image_value = filename
-
-        elif (
-            'image_url' in request.form
-            and request.form['image_url'].strip() != ''
-        ):
-            image_value = fix_image_url(request.form['image_url'])
-
         else:
             image_value = 'sampleart.jpg'
 
