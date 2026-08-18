@@ -555,3 +555,8 @@ html, body {
 button {
     outline: none;
 }
+
+* {
+    font-family: 'Public Sans', sans-serif;
+
+}
