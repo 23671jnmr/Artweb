@@ -137,7 +137,6 @@ def upload():
 
         title = request.form['title']
         description = request.form['description']
-        rating = request.form['rating']
         category = request.form['category']
         username = request.form['username']
 
@@ -146,7 +145,7 @@ def upload():
         cur.execute(
             "INSERT INTO uploads (title, image, description, rating, username,"
             "category) VALUES (?, ?, ?, ?, ?, ?)",
-            (title, image_value, description, rating, username, category)
+            (title, image_value, description, username, category)
         )
         conn.commit()
         conn.close()
