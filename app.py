@@ -101,7 +101,7 @@ def art_page(art_id):
 def add_comment(art_id):
     rating = request.form['rating']
     comment_text = request.form['comment_text']
-    username = "Anonymous Art Lover"
+    username = "Anonymous"
 
     conn = get_db()
     cur = conn.cursor()
