@@ -34,9 +34,9 @@
                     <input type="file" name="file" accept="image/*" required>
                 </div>
 
-                <input type="text" name="username" placeholder="Your Name..." required>
-                <input type="text" name="title" placeholder="Image title..." required>
-                <textarea name="description" placeholder="Image Description..." required></textarea>
+                <input type="text" name="username" maxlength="30" placeholder="Your Name(max 30 letters)..." required>
+                <input type="text" name="title" maxlength="30" placeholder="Image title(max 30 letters)..." required>
+                <textarea name="description" maxlength="300" placeholder="Image Description(max 300 letters)..." required></textarea>
 
                 <select name="category" required>
                     <option value="" disabled selected>Select Category...</option>
