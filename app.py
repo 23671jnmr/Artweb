@@ -7,13 +7,17 @@ from flask import Flask, render_template, request, redirect
 
 os.environ['HTTP_PROXY'] = 'http://proxy.server:3128'
 os.environ['HTTPS_PROXY'] = 'http://proxy.server:3128'
+os.environ['http_proxy'] = 'http://proxy.server:3128'
+os.environ['https_proxy'] = 'http://proxy.server:3128'
+
 
 # Cloudinary Setup
 cloudinary.config(
     cloud_name="hnou3cx6",
     api_key="278196854721826",
     api_secret="EDnAwQ0NocXYdNiAcRXMwxzL_bc",
-    secure=True
+    secure=True,
+    api_proxy="http://proxy.server:3128"
 )
 
 
