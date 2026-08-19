@@ -20,3 +20,14 @@ ALTER TABLE comments ADD COLUMN rating INTEGER;
 ALTER TABLE comments DROP COLUMN timestamp;
 
 PRAGMA table_info(uploads);
+
+DELETE FROM comments WHERE upload_id IN (6, 10, 11, 13, 17, 18);
+
+DELETE FROM uploads WHERE id IN (20);
+
+
+PRAGMA foreign_keys = OFF;
+DELETE FROM uploads;
+PRAGMA foreign_keys = ON;
+
+
