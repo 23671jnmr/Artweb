@@ -1,4 +1,3 @@
-import os
 import sqlite3
 import cloudinary
 import cloudinary.uploader
@@ -10,7 +9,7 @@ cloudinary.config(
     cloud_name="hnou3cx6",
     api_key="278196854721826",
     api_secret="EDnAwQ0NocXYdNiAcRXMwxzL_bc",
-    secure=True
+    secure=True,
     api_proxy="http://proxy.server:3128"
 )
 
