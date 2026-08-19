@@ -127,9 +127,7 @@ def upload():
 
         if 'file' in request.files and request.files['file'].filename != '':
             file = request.files['file']
-            upload_result = cloudinary.uploader.upload(
-                file,
-                api_proxy="http://proxy.server:3128")
+            upload_result = cloudinary.uploader.upload(file)
             image_url = upload_result['secure_url']
         else:
             image_url = 'sampleart.jpg'
