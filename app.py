@@ -1,14 +1,7 @@
-import os
 import sqlite3
 import cloudinary
 import cloudinary.uploader
 from flask import Flask, render_template, request, redirect
-
-
-os.environ['HTTP_PROXY'] = 'http://proxy.server:3128'
-os.environ['HTTPS_PROXY'] = 'http://proxy.server:3128'
-os.environ['http_proxy'] = 'http://proxy.server:3128'
-os.environ['https_proxy'] = 'http://proxy.server:3128'
 
 
 # Cloudinary Setup
@@ -16,8 +9,7 @@ cloudinary.config(
     cloud_name="hnou3cx6",
     api_key="278196854721826",
     api_secret="EDnAwQ0NocXYdNiAcRXMwxzL_bc",
-    secure=True,
-    api_proxy="http://proxy.server:3128"
+    secure=True
 )
 
 
@@ -28,18 +20,21 @@ UPLOAD_FOLDER = 'static/images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
+# creates a connection to my SQLITE databases
 def get_db():
     conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row
     return conn
 
 
+# home page
 @app.route('/')
 def home():
     # home page
     return render_template('home.html')
 
 
+# traditional page
 @app.route('/traditional.html')
 def traditional():
     conn = get_db()
@@ -50,6 +45,7 @@ def traditional():
     return render_template('traditional.html', uploads=uploads)
 
 
+# digital page
 @app.route('/digital.html')
 def digital():
     # digital page
@@ -61,6 +57,7 @@ def digital():
     return render_template('digital.html', uploads=uploads)
 
 
+# other page
 @app.route('/others.html')
 def other():
     # other page
@@ -72,16 +69,19 @@ def other():
     return render_template('others.html', uploads=uploads)
 
 
+# Individual art page w
 @app.route('/art/<int:art_id>')
 def art_page(art_id):
+    # this takes user back from where it came from
     previous_page = request.args.get('from', 'home')
 
     conn = get_db()
     cur = conn.cursor()
 
+    # selected art piece
     cur.execute("SELECT * FROM uploads WHERE id = ?", (art_id,))
     art = cur.fetchone()
-
+    # it gets all the comments for this art piece
     cur.execute(
         "SELECT username, comment_text, rating FROM comments "
         "WHERE upload_id = ?",
@@ -99,15 +99,19 @@ def art_page(art_id):
     )
 
 
+# add comment to the art
 @app.route('/add_comment/<int:art_id>', methods=['POST'])
 def add_comment(art_id):
     previous_page = request.args.get('from', 'home')
+    # the form data
     rating = request.form['rating']
     comment_text = request.form['comment_text']
+    # this makes the comment section anonymous
     username = "Anonymous"
 
     conn = get_db()
     cur = conn.cursor()
+    # insert comment into database
     cur.execute(
         "INSERT INTO comments "
         "(upload_id, username, comment_text, rating) "
@@ -117,14 +121,17 @@ def add_comment(art_id):
     conn.commit()
     conn.close()
 
+    # redirect link from previous page
     return redirect(f"/art/{art_id}?from={previous_page}")
 
 
+# upload page
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
     if request.method == 'POST':
         image_url = ""
 
+        # if user upload a file it basically says upload it to cloudinary
         if 'file' in request.files and request.files['file'].filename != '':
             file = request.files['file']
             upload_result = cloudinary.uploader.upload(file)
@@ -132,6 +139,7 @@ def upload():
         else:
             image_url = 'sampleart.jpg'
 
+        # its to get the form data
         title = request.form['title']
         description = request.form['description']
         category = request.form['category']
@@ -139,19 +147,28 @@ def upload():
 
         conn = get_db()
         cur = conn.cursor()
+        # insert new uploads into databse
         cur.execute(
-            "INSERT INTO uploads (username, title, image, description, category)"
+            "INSERT INTO uploads "
+            "(username, title, image, description, category) "
             "VALUES (?, ?, ?, ?, ?)",
             (username, title, image_url, description, category)
         )
         conn.commit()
         conn.close()
 
-        redirect_page = "others.html" if category == "other" else f"{category}.html"
+        # redirect to the correct category page
+        redirect_page = (
+            "others.html"
+            if category == "other"
+            else f"{category}.html"
+        )
         return redirect(f"/{redirect_page}")
 
+    # this shows upload page
     return render_template('upload.html')
 
 
+# run the app
 if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)

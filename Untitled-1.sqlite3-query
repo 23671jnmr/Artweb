@@ -30,4 +30,4 @@ PRAGMA foreign_keys = OFF;
 DELETE FROM uploads;
 PRAGMA foreign_keys = ON;
 
-
+SELECT * FROM comments;
