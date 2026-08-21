@@ -14,14 +14,14 @@
         <div class="art-left">
             <button class="back-btn" onclick="window.location.href='/{{ previous_page }}'">← Back</button>
 
-           
+           <!-- artist avatar generated auto using their username-->
             <div class="artist-info">
                 <div class="artist-icon">
                     <img src="https://ui-avatars.com/api/?name={{ art['username'] }}&background=c4c4c4&color=fff&rounded=true" alt="Artist Avatar">
                 </div>
             </div>
 
-
+            <!-- artwork images-->
             <div class="art-image">
                 {% if  art['image'].strip().startswith('http://') or art['image'].strip().startswith('https://') %}
                     <img src="{{ art['image'] }}" alt="{{ art['title'] }}">
@@ -60,6 +60,7 @@
                 {% for c in comments %}
                 <div class="comment-card">
                     <div class="comment-user">
+                        <!-- auto generated avatar using dicebear-->
                         <div class="user-icon">
                                 <img src="https://api.dicebear.com/7.x/thumbs/svg?seed={{ c['username'] }}" alt="{{ c['username'] }} avatar showing a stylized thumbnail with initials; neutral expression">
                         </div>

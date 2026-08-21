@@ -9,6 +9,7 @@
 <body>
     <div class="upload-wrapper">
         <div class="upload-left">
+            <!-- left side with instructions n back button-->
 
             <button class="back-btn" onclick="history.back()">← Back</button>
 
@@ -26,15 +27,15 @@
 
 
         <div class="upload-right">
-
+            <!-- right side where we can find te upload form-->
 
             <form id="uploadForm" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-
+                <!-- image file input-->
                 <div class="form-group">
                      <label for="file">Select Artwork Image:</label>
                     <input type="file" name="file" accept="image/*" required>
                 </div>
-
+                <!-- inputs and max lengths -->
                 <input type="text" name="username" maxlength="30" placeholder="Your Name(max 30 letters)..." required>
                 <input type="text" name="title" maxlength="30" placeholder="Image title(max 30 letters)..." required>
                 <textarea name="description" maxlength="300" placeholder="Image Description(max 300 letters)..." required></textarea>
@@ -45,7 +46,7 @@
                     <option value="digital">Digital</option>
                     <option value="other">Other</option>
                 </select>
-
+                <!-- buttons - cancel and upload-->
                 <div class="upload-buttons">
                     <button type="button" class="cancel-btn"
                         onclick="document.getElementById('uploadForm').reset()">Cancel</button>

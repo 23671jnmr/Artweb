@@ -2,12 +2,14 @@
 <html>
 <head>
     <title>BHS Art Gallery</title>
+    <!-- Google font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="Art-section">
 
 <div class="container">
+    <!--left panel-->
     <div class="left-panel">
 
         <button class="back-btn" onclick="window.location.href='/'">← Back</button>
@@ -22,7 +24,9 @@
     </div>
 
     <div class="right-panel">
+        <!-- right panel-->
         {% for art in uploads %}
+        <!-- each art linsk to its individual page-->
         <a href="/art/{{ art['id'] }}?from=traditional.html" class="art-link">
             <div class="art-card">
                 
